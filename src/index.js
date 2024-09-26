@@ -46,20 +46,23 @@ function removeProduct(event) {
 
 function addLine(name, cost){
   let table = document.getElementById('cart');
-  let line;
+  let line, cell, input;
 
+  // Defining a line of the Table
   line = document.createElement('tr');
   line.setAttribute("class", "product");
  
-  let cell = document.createElement('td');
+  //First Cell
+  cell = document.createElement('td');
   cell.setAttribute("class", "name");
 
-  let input = document.createElement('span');
+  input = document.createElement('span');
   input.innerText = name
 
   cell.appendChild(input);
   line.appendChild(cell);
 
+  // Second Cell
   cell = document.createElement('td');
   cell.innerText = "$";
   cell.setAttribute("class", "price");
@@ -72,20 +75,20 @@ function addLine(name, cost){
   cell.appendChild(input);
   line.appendChild(cell);
 
-
+  // Third Cell
   cell = document.createElement('td');
   cell.setAttribute("class", "quantity");
 
   input = document.createElement('input');
   input.setAttribute("type", "number");
-  input.setAttribute("min", "0");
+  input.setAttribute("min", "0.00");
   input.value = 0;
 
 
   cell.appendChild(input);
   line.appendChild(cell);
 
-
+  // Fourth Cell
   cell = document.createElement('td');
   cell.innerText = "$"
   cell.setAttribute("class", "subtotal");
@@ -95,18 +98,19 @@ function addLine(name, cost){
   cell.appendChild(input);
   line.appendChild(cell);
   
-
+  // Fith Cell
   cell = document.createElement('td');
   cell.setAttribute("class", "action");
 
   input = document.createElement('button');
   input.innerText = "Remove";
   input.setAttribute("class", "btn btn-remove");
-  input.addEventListener('click', createProduct)
+  input.addEventListener('click', removeProduct)
 
   cell.appendChild(input);
   line.appendChild(cell);
 
+  console.log(line);
   table.appendChild(line);
 
 }
